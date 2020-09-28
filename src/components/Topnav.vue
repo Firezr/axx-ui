@@ -21,6 +21,7 @@ import {
   inject,
   Ref
 } from "vue";
+
 export default {
   props: {
     toggleMenuButtonVisible:{
@@ -33,6 +34,7 @@ export default {
     let toggleMenu = () => {
       menuVisiable.value = !menuVisiable.value
     }
+    
     return {
       toggleMenu
     }

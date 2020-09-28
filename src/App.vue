@@ -1,21 +1,27 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-  <!-- <HelloWorld msg="Hello Vue 3.0 + Vite" /> -->
   <router-view />
 </template>
 
 <script lang='ts'>
 import { provide, ref } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import router from "./router";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    
   },
   setup() {
-    let menuVisiable = ref(true)
+    let width = document.documentElement.clientWidth
+
+    let menuVisiable = ref( width > 500 ? true : false )
+    // let menuVisiable = ref( true )
     provide('menuVisiable', menuVisiable) // set
+
+    router.afterEach(() => {
+      menuVisiable.value = width > 500 ? true : false
+    });
   },
 }
 </script>

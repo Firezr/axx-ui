@@ -1,75 +1,75 @@
 <template>
-<div class="layout">
-  <Topnav class="nav" toggleMenuButtonVisible/>
-  <div class="content">
-    <aside v-if="menuVisiable">
-      <h2>文档</h2>
-      <ol>
-        <li>
-          <router-link to="/doc/intro">介绍</router-link>
-        </li>
-        <li>
-          <router-link to="/doc/install">安装</router-link>
-        </li>
-        <li>
-          <router-link to="/doc/get-started">开始使用</router-link>
-        </li>
-      </ol>
-      <h2>组件列表</h2>
-      <ol>
-        <li>
-          <router-link to="/doc/switch">Switch 组件</router-link>
-        </li>
-        <li>
-          <router-link to="/doc/button">Button 组件</router-link>
-        </li>
-        <li>
-          <router-link to="/doc/dialog">Dialog 组件</router-link>
-        </li>
-        <li>
-          <router-link to="/doc/tabs">Tabs 组件</router-link>
-        </li>
-      </ol>
-    </aside>
-    <main>
-      <router-view />
-    </main>
+  <div class="layout">
+    <Topnav class="nav" toggleMenuButtonVisible />
+    <div class="content">
+      <aside v-if="menuVisiable">
+        <h2>文档</h2>
+        <ol>
+          <!-- <li>
+            <router-link to="/doc/intro">介绍</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/install">安装</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/get-started">开始使用</router-link>
+          </li> -->
+        </ol>
+        <h2>组件列表</h2>
+        <ol>
+          <li>
+            <router-link to="/doc/switch">Switch 组件</router-link>
+          </li>
+          <!-- <li>
+            <router-link to="/doc/button">Button 组件</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/dialog">Dialog 组件</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/tabs">Tabs 组件</router-link>
+          </li> -->
+        </ol>
+      </aside>
+      <main>
+        <router-view />
+      </main>
+    </div>
   </div>
-</div>
 </template>
 
 <script lang="ts">
 import Topnav from "../components/Topnav.vue";
-import {
-  inject,
-  Ref
-} from "vue";
+import { inject, Ref } from "vue";
+
 export default {
   components: {
-    Topnav
+    Topnav,
   },
   setup() {
-    let menuVisiable = inject < Ref < boolean > >('menuVisiable')  // get
+    let menuVisiable = inject<Ref<boolean>>("menuVisiable"); // get
+    console.log(menuVisiable);
+
     return {
-      menuVisiable
-    }
+      menuVisiable,
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-$aside-index : 10;
+$aside-index: 10;
 
 .layout {
   display: flex;
   flex-direction: column;
   height: 100vh;
 
-  >.nav {
+  > .nav {
     flex-shrink: 0;
   }
 
-  >.content {
+  > .content {
     flex-grow: 1;
     padding-top: 60px;
     padding-left: 156px;
@@ -83,11 +83,11 @@ $aside-index : 10;
 .content {
   display: flex;
 
-  >aside {
+  > aside {
     flex-shrink: 0;
   }
 
-  >main {
+  > main {
     flex-grow: 1;
     padding: 16px;
     background: white;
@@ -105,14 +105,14 @@ aside {
   height: 100%;
   z-index: $aside-index;
 
-  >h2 {
+  > h2 {
     margin-bottom: 4px;
     padding: 0 16px;
   }
 
-  >ol {
-    >li {
-      >a {
+  > ol {
+    > li {
+      > a {
         display: block;
         padding: 4px 16px;
         text-decoration: none;
