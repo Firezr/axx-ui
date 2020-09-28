@@ -23,10 +23,19 @@ import {
 } from "vue";
 export default {
   props: {
-    
+    toggleMenuButtonVisible:{
+      type: Boolean,
+      default: false
+    }
   },
   setup() {
-    
+    let menuVisiable = inject < Ref < boolean > > ('menuVisiable') // get
+    let toggleMenu = () => {
+      menuVisiable.value = !menuVisiable.value
+    }
+    return {
+      toggleMenu
+    }
   },
 };
 </script>
