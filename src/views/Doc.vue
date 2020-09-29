@@ -20,7 +20,7 @@
           <li>
             <router-link to="/doc/switch">Switch 组件</router-link>
           </li>
-          <!-- <li>
+          <li>
             <router-link to="/doc/button">Button 组件</router-link>
           </li>
           <li>
@@ -28,7 +28,7 @@
           </li>
           <li>
             <router-link to="/doc/tabs">Tabs 组件</router-link>
-          </li> -->
+          </li>
         </ol>
       </aside>
       <main>

@@ -1,8 +1,8 @@
 <template>
-  switch文档
+  默认页面
 </template>
 
-<script lang='ts'>
+<script>
 export default {
 
 }
