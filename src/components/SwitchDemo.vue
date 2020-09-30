@@ -8,8 +8,11 @@
 import {
   ref
 } from 'vue'
+// 组件首字母必须大写？
+import Switch from "../lib/switch.vue";
 export default {
   components: {
+    
   },
   setup() {
     return {
