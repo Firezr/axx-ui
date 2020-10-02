@@ -3,8 +3,8 @@ import Home from "./views/Home.vue";
 import Doc from "./views/Doc.vue";
 
 import DocDefault from "./components/DocDefault.vue";
-import SwitchDemo from "./components/SwitchDemo.vue";
-import ButtonDemo from "./components/ButtonDemo.vue";
+import SwitchDemo from "./components/switch/SwitchDemo.vue";
+import ButtonDemo from "./components/button/ButtonDemo.vue";
 import DialogDemo from "./components/DialogDemo.vue";
 import TabsDemo from "./components/TabsDemo.vue";
 

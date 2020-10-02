@@ -48,8 +48,6 @@ export default {
   },
   setup() {
     let menuVisiable = inject<Ref<boolean>>("menuVisiable"); // get
-    console.log(menuVisiable);
-
     return {
       menuVisiable,
     };
