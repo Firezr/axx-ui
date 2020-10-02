@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts">
-import Topnav from "../components/Topnav.vue";
+import Topnav from "../components/TopnavDemo.vue";
 import { inject, Ref } from "vue";
 
 export default {

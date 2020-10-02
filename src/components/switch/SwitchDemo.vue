@@ -1,6 +1,7 @@
 <template>
 <div>
-  <h1>Switch 组件示例 </h1>
+  <Switch1 />
+  <Switch2 />
 </div>
 </template>
 
@@ -8,15 +9,17 @@
 import {
   ref
 } from 'vue'
+import Switch1 from "./Switch1.demo.vue";
+import Switch2 from "./Switch2.demo.vue";
 // 组件首字母必须大写？
-import Switch from "../lib/switch.vue";
 export default {
   components: {
-    
+    Switch1, Switch2
   },
   setup() {
+    let checked = ref(false)
     return {
-      
+      checked
     }
   }
 }

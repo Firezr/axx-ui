@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import Topnav from "../components/Topnav.vue";
+import Topnav from "../components/TopnavDemo.vue";
 export default {
   components: {
     Topnav

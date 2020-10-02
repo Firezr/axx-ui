@@ -6,7 +6,7 @@ import DocDefault from "./components/DocDefault.vue";
 import SwitchDemo from "./components/SwitchDemo.vue";
 import ButtonDemo from "./components/ButtonDemo.vue";
 import DialogDemo from "./components/DialogDemo.vue";
-import TabsDemo from "./components/Tabs.vue";
+import TabsDemo from "./components/TabsDemo.vue";
 
 let history = createWebHashHistory()
 export default createRouter({
