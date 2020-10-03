@@ -31,8 +31,6 @@ export default {
     }
   },
   setup(props, context) {
-    console.log(props);
-    
     let classes = {
       [`gulu-theme-${props.theme}`] : true, 
       [`gulu-size-${props.size}`] : true, 
