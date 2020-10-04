@@ -1,35 +1,102 @@
 <template>
-  <button class="gulu-switch"  :class="{'gulu-checked': false}">
-    <span></span>
-  </button>
+<div class="gulu-tabs">
+  <div class="gulu-tabs-nav" ref="container">
+    <div class="gulu-tabs-nav-item" 
+      v-for="(t,index) in titles" 
+      :ref="el => { if (t === selectedTitle) selectedItem = el }"
+      @click="select(t)" 
+      :class="{selected: t === selectedTitle}" 
+      :key="index">
+      {{t}}
+    </div>
+    <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
+  </div>
+  <div class="gulu-tabs-content">
+    <component :is="current" :key="current.props.title" />
+  </div>
+</div>
 </template>
-<script lang="ts" setup="props, context">
-import { ref, SetupContext } from "vue";
+
+<script lang="ts">
+import Tab from './Tab.vue'
+import {
+  computed,
+  ref,
+  watchEffect,
+  onMounted, SetupContext, Component
+} from 'vue'
+
 export default {
   props: {
-    value: Boolean,
+    selectedTitle: {
+      type: String
+    }
   },
-};
+  setup(props, context) {
+    const defaults = context.slots.default()
 
+    defaults.forEach((com) => {
+      // if ((com.type as Component).name !== Tab.name) {}
+      if(com.type.name !== Tab.name) {
+        throw new Error('Tabs 子标签必须是 Tab')
+      }
+    })
+    let titles = defaults.map(com => com.props.title)
+    let current = computed(()=>{
+      return defaults.find(com => com.props.title === props.selectedTitle)
+    })
+
+    let select = (title: string) => {
+      context.emit('update:selectedTitle', title)
+    }
+    return {
+      titles,
+      current,
+      select
+    }
+  }
+}
 </script>
 
 <style lang="scss">
-$h: 22px;
-$h2: $h - 4px;
-.gulu-switch {
-  height: $h; width: $h * 2; border: none; background: #bfbfbf; border-radius: $h/2; position: relative;
-  > span {
-    position: absolute; top: 2px; left: 2px; height: $h2; width: $h2; background: white; border-radius: $h2 / 2; transition: all 250ms;
+$blue: #40a9ff;
+$color: #333;
+$border-color: #d9d9d9;
+
+.gulu-tabs {
+  &-nav {
+    display: flex;
+    color: $color;
+    border-bottom: 1px solid $border-color;
+    position: relative;
+
+    &-item {
+      padding: 8px 0;
+      margin: 0 16px;
+      cursor: pointer;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &.selected {
+        color: $blue;
+      }
+    }
+
+    &-indicator {
+      position: absolute;
+      height: 3px;
+      background: $blue;
+      left: 0;
+      bottom: -1px;
+      width: 100px;
+      transition: all 250ms;
+    }
   }
-  &.gulu-checked { background: #1890ff;
-    > span { left: calc(100% - #{$h2} - 2px); }
-  }
-  &:focus { outline: none; }
-  &:active {
-    > span { width: $h2 + 4px; }
-  }
-  &.gulu-checked:active {
-    > span { width: $h2 + 4px; margin-left: -4px; }
+
+  &-content {
+    padding: 8px 0;
   }
 }
 </style>
