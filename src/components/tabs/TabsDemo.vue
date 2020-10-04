@@ -1,15 +1,18 @@
 <template>
-  <Tabs1/>
+  <h1>Tabs 示例</h1>
+  <Demo :component='Tabs1' />
 </template>
 
 <script lang="ts">
-import Tabs1 from "./Tabs1.demo.vue";
+import Demo from "../Demo.vue"
+import Tabs1 from "./Tabs1.demo.vue"
 export default {
   components: {
-    Tabs1
+    Demo
   },
   setup() {
     return {
+      Tabs1
     }
   }
 }

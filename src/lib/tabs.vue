@@ -2,12 +2,12 @@
 <div class="gulu-tabs">
   <div class="gulu-tabs-nav" ref="container">
     <div class="gulu-tabs-nav-item" 
-      v-for="(t,index) in titles" 
-      :ref="el => { if (t === selectedTitle) selectedItem = el }"
-      @click="select(t)" 
-      :class="{selected: t === selectedTitle}" 
+      v-for="(title,index) in titles" 
+      :ref="el => { if (title === selectedTitle) selectedItem = el }"
+      @click="select(title)" 
+      :class="{selected: title === selectedTitle}" 
       :key="index">
-      {{t}}
+      {{title}}
     </div>
     <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
   </div>
@@ -23,7 +23,7 @@ import {
   computed,
   ref,
   watchEffect,
-  onMounted, SetupContext, Component
+  onMounted, Component
 } from 'vue'
 
 export default {
@@ -33,14 +33,26 @@ export default {
     }
   },
   setup(props, context) {
-    const defaults = context.slots.default()
+    let container = ref < HTMLDivElement > (null)
+    let selectedItem = ref < HTMLDivElement > (null)
+    let indicator = ref < HTMLDivElement > (null)
 
+    let defaults = context.slots.default()
+    console.log(defaults);
     defaults.forEach((com) => {
-      // if ((com.type as Component).name !== Tab.name) {}
-      if(com.type.name !== Tab.name) {
-        throw new Error('Tabs 子标签必须是 Tab')
+      // if(com.type.name !== Tab.name) {
+      //   throw new Error('Tabs 子标签必须是 Tab')
+      // }
+      if ((com.type as Component).name !== Tab.name) {
+        // 错误抛出后，如果为捕获，后面不会加载
+        // throw new Error('Tabs 子标签必须是 Tab')
+        console.error('Tabs 子标签必须是 Tab')
+        defaults = defaults.filter(com => (com.type as Component).name === Tab.name)
       }
+      defaults = defaults.filter(com => com.props.title)
     })
+    console.log(defaults);
+    
     let titles = defaults.map(com => com.props.title)
     let current = computed(()=>{
       return defaults.find(com => com.props.title === props.selectedTitle)
@@ -49,10 +61,30 @@ export default {
     let select = (title: string) => {
       context.emit('update:selectedTitle', title)
     }
+    let indicatorHandler = () => {
+      watchEffect(() => {
+        let { width, left: itemLeft } = selectedItem.value.getBoundingClientRect()
+        let { left: containerLeft } = container.value.getBoundingClientRect()
+        indicator.value.style.width = width + 'px'
+        indicator.value.style.left = (itemLeft - containerLeft) + 'px'
+      }, {
+        flush: 'post'
+      })
+    }
+    onMounted(() => {
+      indicatorHandler()
+    })
+
     return {
+      // data
       titles,
+      container,
+      selectedItem,
+      indicator,
+      // computed
       current,
-      select
+      // methods
+      select,
     }
   }
 }
