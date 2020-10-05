@@ -1,22 +1,20 @@
+<demo>支持 disabled</demo>
 <template>
-<h1>支持 disabled</h1>
-<Switch v-model:checked='checked' disabled/>
+  <Switch v-model:checked="checked" disabled />
 </template>
 
 <script lang="ts">
-import { Switch } from '../../lib/index'
-import {
-  ref
-} from 'vue'
+import { Switch } from "../../lib/index";
+import { ref } from "vue";
 export default {
   components: {
     Switch,
   },
   setup() {
-    const checked = ref(false)
+    const checked = ref(false);
     return {
-      checked
-    }
-  }
-}
+      checked,
+    };
+  },
+};
 </script>

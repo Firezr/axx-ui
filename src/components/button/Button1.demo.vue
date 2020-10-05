@@ -1,3 +1,4 @@
+<demo>常规使用</demo>
 <template>
 <div>
   <h1>Button 示例</h1>
