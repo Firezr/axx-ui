@@ -1,6 +1,9 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "./views/Home.vue";
 import Doc from "./views/Doc.vue";
+import Intro from "./views/Intro.vue";
+import Install from "./views/Install.vue";
+import GetStarted from "./views/GetStarted.vue";
 
 import DocDefault from "./components/DocDefault.vue";
 import SwitchDemo from "./components/switch/SwitchDemo.vue";
@@ -25,6 +28,19 @@ export default createRouter({
           path: '',
           component: DocDefault
         },
+        {
+          path: 'intro',
+          component: Intro
+        },
+        {
+          path: 'install',
+          component: Install
+        },
+        {
+          path: 'get-started',
+          component: GetStarted
+        },
+        // 组件列表
         {
           path: 'switch',
           component: SwitchDemo
