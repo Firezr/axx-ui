@@ -31,11 +31,13 @@ export default {
     }
   },
   setup(props, context) {
-    let classes = {
-      [`gulu-theme-${props.theme}`] : true, 
-      [`gulu-size-${props.size}`] : true, 
-      [`gulu-level-${props.level}`] : true, 
-    }
+    let classes = computed(()=>{
+      return {
+        [`gulu-theme-${props.theme}`] : props.theme !== 'button',
+        [`gulu-size-${props.size}`] : props.size !== 'normal', 
+        [`gulu-level-${props.level}`] : props.level !== 'normal', 
+      }
+    })
     return { classes }
   }
 };
@@ -162,18 +164,19 @@ $grey: grey;
       }
     }
   }
-  &.gulu-theme-link, &.gulu-theme-text {
+  &.gulu-theme-link,
+  &.gulu-theme-text {
     &[disabled] {
       cursor: not-allowed;
       color: $grey;
     }
   }
-  > .gulu-loadingIndicator{
+  > .gulu-loadingIndicator {
     width: 14px;
     height: 14px;
     display: inline-block;
     margin-right: 4px;
-    border-radius: 8px; 
+    border-radius: 8px;
     border-color: $blue $blue $blue transparent;
     border-style: solid;
     border-width: 2px;
@@ -181,7 +184,11 @@ $grey: grey;
   }
 }
 @keyframes gulu-spin {
-  0%{transform: rotate(0deg)} 
-  100%{transform: rotate(360deg)} 
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
