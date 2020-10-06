@@ -1,10 +1,10 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "./views/Home.vue";
 import Doc from "./views/Doc.vue";
-// import Intro from "./views/Intro.vue";
-// import Install from "./views/Install.vue";
-// import GetStarted from "./views/GetStarted.vue";
 
+import Intro from "./markdown/intro.md";
+import Install from "./markdown/install.md";
+import GetStarted from "./markdown/get-started.md";
 
 import DocDefault from "./components/DocDefault.vue";
 import SwitchDemo from "./components/switch/SwitchDemo.vue";
@@ -14,7 +14,7 @@ import TabsDemo from "./components/tabs/TabsDemo.vue";
 
 import { h } from "vue";
 import Markdown from "./components/Markdown.vue";
-const md = (path) => h(Markdown, { path: `../markdown/${path}.md`, key: path })
+const md = (content) => h(Markdown, { content, key: content })
 
 let history = createWebHashHistory()
 export default createRouter({
@@ -35,19 +35,16 @@ export default createRouter({
         },
         {
           path: 'intro',
-          // component: Intro,
-          component: md('intro'),
+          component: md(Intro),
         },
         {
           path: 'install',
-          // component: Install,
-          component: md('install'),
+          component: md(Install),
           
         },
         {
           path: 'get-started',
-          // component: GetStarted,
-          component: md('get-started'),
+          component: md(GetStarted),
         },
         // 组件列表
         {
