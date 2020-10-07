@@ -1,12 +1,12 @@
 <template>
 <template v-if="visible">
   <Teleport to="body">
-    <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
-    <div class="gulu-dialog-wrapper">
-      <div class="gulu-dialog">
+    <div class="axx-dialog-overlay" @click="onClickOverlay"></div>
+    <div class="axx-dialog-wrapper">
+      <div class="axx-dialog">
         <header>
           <slot name="title" />
-          <span @click="close" class="gulu-dialog-close"></span>
+          <span @click="close" class="axx-dialog-close"></span>
         </header>
         <main>
           <slot name="content" />
@@ -45,9 +45,7 @@ export default {
     Button,
   },
   setup(props, context) {
-    const close = () => {
-      context.emit('update:visible', false)
-    }
+    const close = () => context.emit('update:visible', false)
     const onClickOverlay = ()=>{
       if(!props.closeOnClickOverlay) return
       close()
@@ -80,7 +78,7 @@ export default {
 $radius: 4px;
 $border-color: #d9d9d9;
 
-.gulu-dialog {
+.axx-dialog {
   background: white;
   border-radius: $radius;
   box-shadow: 0 0 3px fade_out(black, 0.5);

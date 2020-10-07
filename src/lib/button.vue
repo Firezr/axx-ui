@@ -1,6 +1,6 @@
 <template>
-  <button class="gulu-button" :class="classes" :disabled="disabled">
-    <span v-if="loading" class="gulu-loadingIndicator"></span>
+  <button class="axx-button" :class="classes" :disabled="disabled">
+    <span v-if="loading" class="axx-loadingIndicator"></span>
     <slot />
   </button>
 </template>
@@ -33,9 +33,9 @@ export default {
   setup(props, context) {
     let classes = computed(()=>{
       return {
-        [`gulu-theme-${props.theme}`] : props.theme !== 'button',
-        [`gulu-size-${props.size}`] : props.size !== 'normal', 
-        [`gulu-level-${props.level}`] : props.level !== 'normal', 
+        [`axx-theme-${props.theme}`] : props.theme !== 'button',
+        [`axx-size-${props.size}`] : props.size !== 'normal', 
+        [`axx-level-${props.level}`] : props.level !== 'normal', 
       }
     })
     return { classes }
@@ -51,7 +51,7 @@ $blue: #40a9ff;
 $radius: 4px;
 $red: red;
 $grey: grey;
-.gulu-button {
+.axx-button {
   box-sizing: border-box;
   height: $h;
   padding: 0 12px;
@@ -80,7 +80,7 @@ $grey: grey;
   &::-moz-focus-inner {
     border: 0;
   }
-  &.gulu-theme-link {
+  &.axx-theme-link {
     border-color: transparent;
     box-shadow: none;
     color: $blue;
@@ -89,7 +89,7 @@ $grey: grey;
       color: lighten($blue, 10%);
     }
   }
-  &.gulu-theme-text {
+  &.axx-theme-text {
     border-color: transparent;
     box-shadow: none;
     color: inherit;
@@ -98,18 +98,18 @@ $grey: grey;
       background: darken(white, 5%);
     }
   }
-  &.gulu-size-big {
+  &.axx-size-big {
     font-size: 24px;
     height: 48px;
     padding: 0 16px;
   }
-  &.gulu-size-small {
+  &.axx-size-small {
     font-size: 12px;
     height: 20px;
     padding: 0 4px;
   }
-  &.gulu-theme-button {
-    &.gulu-level-main {
+  &.axx-theme-button {
+    &.axx-level-main {
       background: $blue;
       color: white;
       border-color: $blue;
@@ -119,7 +119,7 @@ $grey: grey;
         border-color: darken($blue, 10%);
       }
     }
-    &.gulu-level-danger {
+    &.axx-level-danger {
       background: $red;
       border-color: $red;
       color: white;
@@ -130,8 +130,8 @@ $grey: grey;
       }
     }
   }
-  &.gulu-theme-link {
-    &.gulu-level-danger {
+  &.axx-theme-link {
+    &.axx-level-danger {
       color: $red;
       &:hover,
       &:focus {
@@ -139,15 +139,15 @@ $grey: grey;
       }
     }
   }
-  &.gulu-theme-text {
-    &.gulu-level-main {
+  &.axx-theme-text {
+    &.axx-level-main {
       color: $blue;
       &:hover,
       &:focus {
         color: darken($blue, 10%);
       }
     }
-    &.gulu-level-danger {
+    &.axx-level-danger {
       color: $red;
       &:hover,
       &:focus {
@@ -155,7 +155,7 @@ $grey: grey;
       }
     }
   }
-  &.gulu-theme-button {
+  &.axx-theme-button {
     &[disabled] {
       cursor: not-allowed;
       color: $grey;
@@ -164,14 +164,14 @@ $grey: grey;
       }
     }
   }
-  &.gulu-theme-link,
-  &.gulu-theme-text {
+  &.axx-theme-link,
+  &.axx-theme-text {
     &[disabled] {
       cursor: not-allowed;
       color: $grey;
     }
   }
-  > .gulu-loadingIndicator {
+  > .axx-loadingIndicator {
     width: 14px;
     height: 14px;
     display: inline-block;
@@ -180,10 +180,10 @@ $grey: grey;
     border-color: $blue $blue $blue transparent;
     border-style: solid;
     border-width: 2px;
-    animation: gulu-spin 1s infinite linear;
+    animation: axx-spin 1s infinite linear;
   }
 }
-@keyframes gulu-spin {
+@keyframes axx-spin {
   0% {
     transform: rotate(0deg);
   }

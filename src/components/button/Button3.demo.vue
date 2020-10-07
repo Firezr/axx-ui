@@ -21,13 +21,9 @@
 
 <script lang="ts">
 import { Button } from "../../lib/index";
-
 export default {
   components: {
     Button,
-  },
-  setup() {
-    return {};
   },
 };
 </script>

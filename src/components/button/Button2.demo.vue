@@ -7,7 +7,7 @@
       <Button size="small">小小小</Button>
     </div>
     <div>
-      <Button theme="link" size="big">大大大</Button>
+      <Button size="big" theme="link">大大大</Button>
       <Button theme="link">普通</Button>
       <Button size="small" theme="link">小小小</Button>
     </div>
@@ -21,13 +21,9 @@
 
 <script lang="ts">
 import { Button } from "../../lib/index";
-
 export default {
   components: {
     Button,
-  },
-  setup() {
-    return {};
   },
 };
 </script>

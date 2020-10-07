@@ -22,18 +22,11 @@ export default {
   },
   setup() {
     let visible = ref(false);
-    let toggle = () => {
-      visible.value = true;
-    };
-    const onOk = () => {
-      return 1;
-    };
-    const onCancel = () => {
-      return false;
-    };
+    let toggle = () => visible.value = true
+    const onOk = () => 1
+    const onCancel = () => false
     return {
       visible,
-
       toggle,
       onOk,
       onCancel,

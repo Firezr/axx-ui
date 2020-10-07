@@ -1,7 +1,7 @@
 <template>
-<div class="gulu-tabs">
-  <div class="gulu-tabs-nav" ref="container">
-    <div class="gulu-tabs-nav-item" 
+<div class="axx-tabs">
+  <div class="axx-tabs-nav" ref="container">
+    <div class="axx-tabs-nav-item" 
       v-for="(title,index) in titles" 
       :ref="el => { if (title === selectedTitle) selectedItem = el }"
       @click="select(title)" 
@@ -9,9 +9,9 @@
       :key="index">
       {{title}}
     </div>
-    <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
+    <div class="axx-tabs-nav-indicator" ref="indicator"></div>
   </div>
-  <div class="gulu-tabs-content">
+  <div class="axx-tabs-content">
     <component :is="current" :key="current.props.title" />
   </div>
 </div>
@@ -38,7 +38,7 @@ export default {
     let indicator = ref < HTMLDivElement > (null)
 
     let defaults = context.slots.default()
-    console.log(defaults);
+    // console.log(defaults);
     defaults.forEach((com) => {
       // @ts-ignore
       // if(com.type.name !== Tab.name) {
@@ -52,7 +52,7 @@ export default {
       }
       defaults = defaults.filter(com => com.props.title)
     })
-    console.log(defaults);
+    // console.log(defaults);
     
     let titles = defaults.map(com => com.props.title)
     let current = computed(()=>{
@@ -96,7 +96,7 @@ $blue: #40a9ff;
 $color: #333;
 $border-color: #d9d9d9;
 
-.gulu-tabs {
+.axx-tabs {
   &-nav {
     display: flex;
     color: $color;

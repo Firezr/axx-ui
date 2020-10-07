@@ -31,10 +31,7 @@ export default {
   },
   setup() {
     let menuVisiable = inject < Ref < boolean > > ('menuVisiable') // get
-    let toggleMenu = () => {
-      menuVisiable.value = !menuVisiable.value
-    }
-    
+    let toggleMenu = () => menuVisiable.value = !menuVisiable.value
     return {
       toggleMenu
     }

@@ -31,7 +31,7 @@ export default createRouter({
         {
           // 默认显示页面  /doc/
           path: '',
-          component: DocDefault
+          redirect: '/doc/intro'
         },
         {
           path: 'intro',

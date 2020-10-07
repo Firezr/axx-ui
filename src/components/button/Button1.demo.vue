@@ -15,9 +15,5 @@ export default {
   components: {
     Button
   },
-  setup() {
-    return {
-    };
-  },
 };
 </script>
