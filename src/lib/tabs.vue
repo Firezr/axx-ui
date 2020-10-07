@@ -40,6 +40,7 @@ export default {
     let defaults = context.slots.default()
     console.log(defaults);
     defaults.forEach((com) => {
+      // @ts-ignore
       // if(com.type.name !== Tab.name) {
       //   throw new Error('Tabs 子标签必须是 Tab')
       // }
