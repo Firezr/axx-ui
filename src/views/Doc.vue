@@ -59,6 +59,10 @@ export default {
 $aside-index: 10;
 
 .layout {
+  // background: linear-gradient(145deg,#fff100 0%, #ffffff 100%);
+  background: linear-gradient(145deg,#ffffff 0%, #fff100 100%);
+  // clip-path: ellipse(80% 60% at 50% 40%);
+
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -86,6 +90,9 @@ $aside-index: 10;
   }
 
   > main {
+    // background: linear-gradient(145deg,#ffffff 0%, #fff100 70%);
+    // clip-path: ellipse(80% 60% at 50% 40%);
+
     flex-grow: 1;
     padding: 16px;
     background: white;
@@ -93,7 +100,8 @@ $aside-index: 10;
 }
 
 aside {
-  background: lightblue;
+  // background: lightblue;
+  background: linear-gradient(to bottom, #ffffff, #fff100);
   width: 150px;
   padding: 16px 0;
   position: fixed;

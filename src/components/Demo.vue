@@ -17,7 +17,10 @@
 
 <script lang="ts">
 import Button from '../lib/Button.vue'
-import 'prismjs';
+// import Prism from 'prismjs';
+// Prism.highlightAll();
+import 'prismjs/';
+import '../assets/prism.css'
 // import 'prismjs/themes/prism.css'
 import {
   computed,

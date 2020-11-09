@@ -2,7 +2,8 @@
 <div class="topnav">
   <router-link to="/" class="logo">
     <svg class="icon">
-      <use xlink:href="#icon-king"></use>
+      <!-- <use xlink:href="#icon-king"></use> -->
+      <use xlink:href="#icon-shouye"></use>
     </svg>
   </router-link>
   <ul class="menu">
@@ -29,7 +30,7 @@ export default {
       default: false
     }
   },
-  setup() {
+  setup(props) {
     let menuVisiable = inject < Ref < boolean > > ('menuVisiable') // get
     let toggleMenu = () => menuVisiable.value = !menuVisiable.value
     return {
